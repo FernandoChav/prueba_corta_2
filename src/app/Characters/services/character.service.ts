@@ -33,4 +33,14 @@ export class CharacterService {
       return Promise.reject(error);
     }
   }
+
+  async getCharacterByName(name: string): Promise<ResponseAPICharacter>{
+    try{
+      const response = await firstValueFrom(this.http.get<ResponseAPICharacter>(`${this.base_url}/?name=${name}`));
+      return Promise.resolve(response);
+    }catch(error){
+      console.error(error);
+      return Promise.reject(error);
+    }
+  }
 }
