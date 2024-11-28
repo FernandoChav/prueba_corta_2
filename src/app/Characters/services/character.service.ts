@@ -34,9 +34,9 @@ export class CharacterService {
     }
   }
 
-  async getCharacterByName(name: string): Promise<ResponseAPICharacter>{
+  async getCharactersBySearch(search: string): Promise<ResponseAPICharacter>{
     try{
-      const response = await firstValueFrom(this.http.get<ResponseAPICharacter>(`${this.base_url}/?name=${name}`));
+      const response = await firstValueFrom(this.http.get<ResponseAPICharacter>(`${this.base_url}/?name=${search}`));
       return Promise.resolve(response);
     }catch(error){
       console.error(error);

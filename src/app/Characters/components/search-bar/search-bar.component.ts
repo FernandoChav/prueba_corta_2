@@ -1,23 +1,23 @@
-import { Component, inject } from '@angular/core';
-import { CharacterService } from '../../services/character.service';
-
+import { Component, EventEmitter, inject, Output } from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 @Component({
-  selector: 'app-search-bar',
+  selector: 'character-search-bar',
   standalone: true,
-  imports: [],
-  providers: [CharacterService],
+  imports: [FormsModule],
   templateUrl: './search-bar.component.html',
   styleUrl: './search-bar.component.css'
 })
 export class SearchBarComponent {
-  private characterService = inject(CharacterService);
+  
   constructor() { }
 
-  searchCharacter(name: string){
-    this.characterService.getCharacterByName(name).then((response) => {
-      console.log(response);
-    }).catch((error) => {
-      console.log(error);
-    });
+  search = '';
+
+  @Output() searchCharacter = new EventEmitter<string>();
+ 
+  onSearch(){
+    
+    this.searchCharacter.emit(this.search);
   }
 }

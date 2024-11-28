@@ -15,7 +15,8 @@ export class ButtonComponent {
   @Input () page: number = 1;
   @Output() pageSet = new EventEmitter<number>();
   
-  @Input() bottonIsDisabled: boolean = false;
+  @Input() buttonNextsDisabled: boolean = false;
+  @Input() buttonPreviousDisabled: boolean = false;
   constructor() { 
    
   }
